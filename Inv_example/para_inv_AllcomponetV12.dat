@@ -1,0 +1,36 @@
+-----Please_input_the_observed_data_file:
+Inv_deltaT_example_20201119.dat
+-----Please_input_the_[mesh]_file:
+Mesh_Mr_forFM_forInv_20201119.xyz
+-----Please_input_the_[alpha-s_-x_-y_-z]:
+1 1 1 1
+-----Please_input_the_parameter_whether_U_need_[GCV]_to_calculate
+-----the_best_regularization_parameter_or_not:
+1
+-----Please_input_the_[TYPE]_of_the_depth_weighting_function(1_for_1998_usual_weighting_and_2_for_2000_based_on_sensitivity)
+-----and_[uniform_altitude(z0_upward_positive)]_for_1:
+2
+5000
+-----Please_input_the_[beta_value]_of_the_depth_weighting_function_[default_value]_[3_for_1]_and_[1_for_2]
+-----and_[regularization_parameter]_for_THIS_inversion:
+1
+-10.6
+-----Please_input_the_parameter_which_bound_constrained_method_you_choosed
+2
+-----Please_input_the_[_reference_model]_[origin_model]_[minimum_model]_[maximum_model]
+0 0.001 0 10
+-----Please_input_the_[parameter]_whether_using_a_spatial_weighting_function_and_[the_file's_name]:
+1
+SpatialWeight_forInv_20201119.xyz
+-----Please_input_the_parameter_whether_using_a_[non_uniform_reference_model]_and_[the_file's_name]:
+0
+ref_data.dat
+-----Please_input_the_parameter_whether_using_a_[non_uniform_origin_model]_and_[the_file's_name]:
+0
+sus_ori.dat
+-----Please_input_the_parameter_whether_using_a_[non_uniform_minimum_model]_and_[the_file's_name]:
+0
+sus_min.dat
+-----Please_input_the_parameter_whether_using_a_[non_uniform_maximum_model]_and_[the_file's_name]:
+0
+sus_max.dat
