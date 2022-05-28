@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		cout<<endl<<endl<<"USAGE:"<<endl;
 		cout<<"Please use this executable program like this:"<<endl;
 		cout<<endl;
-		cout<<"For help: 3D_Mag_Inv_Tess.o h (or ? or -? or /?) "<<endl<<endl;
+		cout<<"For help: 3D_Mag_Inv_Tess.o h"<<endl<<endl;
 
 		cout<<"Advanced parameter_file usage (recommended): 3D_Mag_Inv_Tess.o f parameter_file"<<endl<<endl;
 		cout<<"    *3D_Mag_Inv_Tess.o* : the name of executable program."<<endl;

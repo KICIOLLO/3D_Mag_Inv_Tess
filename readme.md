@@ -4,17 +4,17 @@ An open-source, parallel C++ code for constrained 3D inversion magnetic data in 
 Thanks for the below Important references:  
 1. The framework of this constrained 3D inversion technique is based on a series of papers and researches by Dr. Yaoguo Li, Dr. Peter  Lelièvre, and Dr. Douglas Oldenburg (e.g., Li and Oldenburg, 1996, 1998, 2003; Lelièvre & Oldenburg, 2009).
 2. [Eldar Baykiev](https://github.com/eldarbaykiev) provided an open-source algorithm [magnetic-tesseroids]( magnetic-tesseroids) (Baykiev et al., 2016), which we referred as the forward modelling part in this program.  
-3. We followed some writing style of the NGDC's [Geomagnetic Field Modeling software for the IGRF and WMM](https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html) .
+3. We followed some writing styles of the NGDC's [Geomagnetic Field Modeling software for the IGRF and WMM](https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html) .
 
-Baykiev, E., Ebbing, J., Brönner, M., & Fabian, K. (2016). Forward modeling magnetic fields of induced and remanent magnetization in the lithosphere using tesseroids. Computers & Geosciences, 96, 124-135. doi: 10.1016/j.cageo.2016.08.004
+<li><small>Baykiev, E., Ebbing, J., Brönner, M., & Fabian, K. (2016). Forward modeling magnetic fields of induced and remanent magnetization in the lithosphere using tesseroids. Computers & Geosciences, 96, 124-135. doi: 10.1016/j.cageo.2016.08.004</small></li>
 
-Lelièvre, P. G., & Oldenburg, D. W. (2009). A comprehensive study of including structural orientation information in geophysical inversions. Geophysical Journal International, 178, 623-637. doi: 10.1111/j.1365-246X.2009.04188.x
+<li><small>Lelièvre, P. G., & Oldenburg, D. W. (2009). A comprehensive study of including structural orientation information in geophysical inversions. Geophysical Journal International, 178, 623-637. doi: 10.1111/j.1365-246X.2009.04188.x</small></li>
 
-Li, Y., & Oldenburg, D. W. (1996). 3-D inversion of magnetic data. Geophysics, 61(2), 394-408. doi: 10.1190/1.1443968
+<li><small>Li, Y., & Oldenburg, D. W. (1996). 3-D inversion of magnetic data. Geophysics, 61(2), 394-408. doi: 10.1190/1.1443968</small></li>
 
-Li, Y., & Oldenburg, D. W. (1998). 3-D inversion of gravity data. Geophysics, 63(1), 109-119. doi: 10.1190/1.1887478
+<li><small>Li, Y., & Oldenburg, D. W. (1998). 3-D inversion of gravity data. Geophysics, 63(1), 109-119. doi: 10.1190/1.1887478</small></li>
 
-Li, Y., & Oldenburg, D. (2003). Fast inversion of large‐scale magnetic data using wavelet transforms and a logarithmic barrier method. Geophysical Journal International, 152, 251-265. doi: 10.1046/j.1365-246X.2003.01766.x
+<li><small>Li, Y., & Oldenburg, D. (2003). Fast inversion of large‐scale magnetic data using wavelet transforms and a logarithmic barrier method. Geophysical Journal International, 152, 251-265. doi: 10.1046/j.1365-246X.2003.01766.x</small></li>
 
 # Compilation Instructions
 ## Required software packages
@@ -41,7 +41,7 @@ icpc IversionMagnetic_tess_3D_V12_cmdline.cpp -o 3D_Mag_Inv_Tess.o -mkl=parallel
 
 3. Using a simple cmd line
 	```sh
-	./3D_Mag_Inv_Tess.o f mag_anomaly_file mesh_file regu_para
+	./3D_Mag_Inv_Tess.o mag_anomaly_file mesh_file regu_para
 	```
 	Only the magnetic anomaly file, mesh file, and the used regularization parameter are used in this simple inversion, other parameters are all default values or settings.
 
@@ -84,7 +84,7 @@ sus_min.dat
 0
 sus_max.dat
 ```
-**Notice**: all the lines with "-----" beginings can not be deleted or add new lines.
+**Notice**: all the lines with "-----" as beginings can not be deleted or add new lines.
 
 ## Anomaly file
 Eight columns are needed.
@@ -98,7 +98,6 @@ For example,
 ```
 83.05 42.05 5000 27159.7 1042.7 47821.1 -3.86481238 1
 ```  
-**Notice**: The above coordinates is the longitude and latitude in a geocentric spherical coordinates system, and the altitude is relative to the Earth's mean radius.
 
 ## Mesh file
 Eleven columns are needed.   
@@ -119,6 +118,9 @@ For example,
 83 83.1 42 42.1 0 -5000 1000 1 23100 1300 53000
 ```  
 
+**Notice**: The above coordinates in both the anomaly and the mesh file are longitudes and latitudes in a geocentric spherical coordinates system, and the altitudes are relative to the Earth's mean radius.
+
+
 ## Spatial weighting functions
 Seven columns are needed.   
 ```
@@ -129,15 +131,14 @@ w_s w_x diff_x w_y diff_y w_z diff_z
 Single column file of which row number equals to the number of the cells in the mesh file.
 
 # Example
-An folder named "Inv_example" includes the parameter file, anomaly file, mesh file, and spatial weighting functions file.  
+A folder named "Inv_example" includes parameter file, anomaly file, mesh file, and spatial weighting functions file.  
 The number of the observation positions and the cells in mesh file are 3500 and 39287, respectively.  
-The sensitivity kernel matrices have the largest memory demand.  
+Due to the sensitivity kernel matrices have the largest memory demand, before running an inversion test we can just estimate its demand.   
 For example, 3500 × 39287 × 8 byte ≈ 1.025 Gb;  
-In the present version of this software, we need four sensitivity kernel matrices with same memory demands, that is three components of the anomalous vector and the total-field anomaly.  
+In the present version of this software, we need four sensitivity kernel matrices with same memory demands, that are related to the three components of the anomalous vector and the total-field anomaly.  
 Thus, for this example the total memory demand of four large matrices should be larger than 1.025 × 4 ≈ 4.1 Gb.  
 Considering there are other smaller matrices and many temp vectors that also need space, so a hardware with memory larger than 5 Gb is recommended for running this example.
 
 
 # Contact
-shidasun.cug@gmail.com
-sdsun@hgu.edu.cn
+Shida Sun (shidasun.cug@gmail.com, sdsun@hgu.edu.cn)
